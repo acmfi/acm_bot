@@ -1,0 +1,12 @@
+[Unit]
+Description=ACM Bot
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/acm_bot
+ExecStart=make srun
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
