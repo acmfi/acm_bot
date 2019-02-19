@@ -1,0 +1,50 @@
+* ACM Bot
+** Ejecución
+Para ejecutar el bot hazte con un token hablando a ~@BotFather~ en
+Telegram.
+
+Crea un archivo llamado ~bot.token~ que contenga únicamente el token,
+por ejemplo así:
+#+BEGIN_SRC shell
+echo "increible_token_que_no_voy_a_subir_a_github" > bot.token
+#+END_SRC
+
+Ya puedes ejecutar el bot con:
+#+BEGIN_SRC shell
+make run
+#+END_SRC
+
+Este comando descargará las dependencias necesarias, las compilará,
+compilará el proyecto y lo ejecutará. Puedes echarle un vistazo al
+~Makefile~ que encontrarás en la raíz del proyecto.
+
+** Subir código
+De momento no hay ningún proceso fijo definido, así que la metodología
+será la siguiente:
+
+*** Crear una issue
+En la issue se deberá explicar por lo menos los siguientes puntos:
+  - Es un nuevo comando, funcionalidad o corrección de código
+  - Breve explicación de en que consiste
+  - Breve explicación de como se pretende solucionar o implementar
+
+*** Crear una rama relacionada con la issue
+El nombre de la rama tendrá el siguiente formato:
+#+BEGIN_SRC
+<github_user>/issue_<issue_number>
+#+END_SRC
+
+Por ejemplo:
+#+BEGIN_SRC
+ironjanowar/issue_1
+#+END_SRC
+
+*** Crear una Pull Request relacionada a la issue
+En esta PR se mencionará la issue y se seleccionará a alguien para que
+la revise y la pruebe.
+
+*** Aprobación de PR
+La PR una vez aprobada se mergeará a la rama ~develop~.
+
+*** Merge a ~master~
+Todavia por definir... ¯\_(ツ)_/¯
