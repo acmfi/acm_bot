@@ -5,11 +5,14 @@ deps:
 	mix deps.compile
 compile: deps
 	mix compile
-token: export BOT_TOKEN = $(shell cat bot.token)
-run: token compile
+run: export BOT_TOKEN = $(shell cat bot.token)
+run: compile
 	mix run --no-halt
-iex:
-	iex -S mix
+clean:
+	rm -rf _build
+purge: clean
+	rm -rf deps
+	rm mix.lock
 
 # scompile stands for systemd compile
 scompile:
@@ -18,7 +21,8 @@ scompile:
 	mix deps.get
 	mix compile
 # srun stands for systemd run
-srun: token scompile
+srun: export BOT_TOKEN = $(shell cat bot.token)
+srun: scompile
 	mix run --no-halt
 
-.PHONY: deps compile token run iex scompile srun
+.PHONY: deps compile run clean purge scompile srun
