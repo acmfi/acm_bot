@@ -4,6 +4,8 @@ defmodule AcmBot.Bot do
   use ExGram.Bot,
     name: @bot
 
+  middleware(ExGram.Middleware.IgnoreUsername)
+
   require Logger
 
   def bot(), do: @bot
