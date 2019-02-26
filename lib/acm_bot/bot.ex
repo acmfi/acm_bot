@@ -26,9 +26,10 @@ defmodule AcmBot.Bot do
     answer(context, "#dep, siempre saludaba\nTaluega #{user}!")
   end
 
+  # Versión precaria del comando armario. Es muy mejorable con las ideas de @IronJanoWar
   def handle({:command, "armario", msg}, context) do
     chat_id = msg.chat.id
-    ExGram.send_document(chat_id, {:file, "../../precios.pdf"})
+    ExGram.send_document(chat_id, {:file, "../../precios.pdf"}) # La ruta se cambiará con la que corresponda dentro del servidor.
   end
   
   def handle(_, _) do
