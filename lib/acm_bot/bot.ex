@@ -26,6 +26,11 @@ defmodule AcmBot.Bot do
     answer(context, "#dep, siempre saludaba\nTaluega #{user}!")
   end
 
+  def handle({:command, "armario", msg}, context) do
+    chat_id = msg.chat.id
+    ExGram.send_document(chat_id, {:file, "../../precios.pdf"})
+  end
+  
   def handle(_, _) do
     :no_message_handle
   end
