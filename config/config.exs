@@ -6,5 +6,5 @@ config :ex_gram,
   token: {:system, "BOT_TOKEN"}
 
 config :acm,
-  #prices_file: "../../Documentos/Comida.pdf"
+  # prices_file: "../../Documentos/Comida.pdf"
   prices_file: {:system, "PRICES_PATH"}
