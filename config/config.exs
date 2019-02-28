@@ -8,3 +8,5 @@ config :ex_gram,
 config :acm_bot,
   # prices_file: "ejemplo.pdf"
   prices_file: {:system, "PRICES_PATH"}
+
+import_config "#{Mix.env()}.exs"
