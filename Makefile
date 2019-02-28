@@ -6,6 +6,7 @@ deps:
 compile: deps
 	mix compile
 run: export BOT_TOKEN = $(shell cat bot.token)
+run: export PRICES_PATH = "path/to/file"
 run: compile
 	mix run --no-halt
 clean:
@@ -22,6 +23,7 @@ scompile:
 	mix compile
 # srun stands for systemd run
 srun: export BOT_TOKEN = $(shell cat bot.token)
+srun: export PRICES_PATH = "path/to/file"
 srun: scompile
 	mix run --no-halt
 
