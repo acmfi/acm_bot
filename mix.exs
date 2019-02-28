@@ -22,7 +22,10 @@ defmodule AcmBot.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:ex_gram, "~> 0.5.0"}
+      {:ex_gram, "~> 0.5.0"},
+      # Releases
+      {:distillery, "~> 2.0", runtime: false},
+      {:config_tuples, "~> 0.2"}
     ]
   end
 end

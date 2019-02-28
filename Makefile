@@ -5,26 +5,33 @@ deps:
 	mix deps.compile
 compile: deps
 	mix compile
+
+release: export MIX_ENV = prod
+release: deps
+	mix release
+
 run: export BOT_TOKEN = $(shell cat bot.token)
 run: export PRICES_PATH = path/to/file
 run: compile
 	mix run --no-halt
+
 clean:
 	rm -rf _build
+
 purge: clean
 	rm -rf deps
 	rm mix.lock
 
-# scompile stands for systemd compile
-scompile:
+sinstall:
 	mix local.hex --force
 	mix local.rebar --force
-	mix deps.get
-	mix compile
+
+# scompile stands for systemd compile
+scompile: sinstall deps release
 # srun stands for systemd run
 srun: export BOT_TOKEN = $(shell cat bot.token)
 srun: export PRICES_PATH = path/to/file
 srun: scompile
-	mix run --no-halt
+	_build/prod/rel/acm_bot/bin/acm_bot foreground
 
-.PHONY: deps compile run clean purge scompile srun
+.PHONY: deps compile release run clean purge scompile srun
