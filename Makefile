@@ -27,9 +27,7 @@ sinstall:
 	mix local.rebar --force
 
 # scompile stands for systemd compile
-scompile: sinstall
-scompile: deps
-scompile: release
+scompile: sinstall deps release
 # srun stands for systemd run
 srun: export BOT_TOKEN = $(shell cat bot.token)
 srun: export PRICES_PATH = path/to/file
