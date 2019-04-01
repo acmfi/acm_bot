@@ -8,8 +8,8 @@ defmodule AcmBot do
 
     children = [
       ExGram,
-      {AcmBot.Bot, [method: :polling, token: token]},
-      AcmBot.Cache
+      AcmBot.Cache,
+      {AcmBot.Bot, [method: :polling, token: token]}
     ]
 
     opts = [strategy: :one_for_one, name: AcmBot]
