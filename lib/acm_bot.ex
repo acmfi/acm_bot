@@ -8,6 +8,7 @@ defmodule AcmBot do
 
     children = [
       ExGram,
+      AcmBot.Cache,
       {AcmBot.Bot, [method: :polling, token: token]}
     ]
 
