@@ -30,15 +30,15 @@ defmodule AcmBot.Bot do
         )
 
       _ ->
-        case AcmBot.Cache.get_file_id() do
-          id when id in ["", nil] ->
+        case AcmBot.Cache.get(:file_id_comida) do
+          nil ->
             {:ok, %{document: %{file_id: file_id}}} =
               ExGram.send_document(chat_id, {:file, prices_path})
 
-            AcmBot.Cache.set_file_id(file_id)
+            AcmBot.Cache.set(:file_id_comida, file_id)
 
           _ ->
-            ExGram.send_document(chat_id, AcmBot.Cache.get_file_id())
+            ExGram.send_document(chat_id, AcmBot.Cache.get(:file_id_comida))
         end
     end
   end

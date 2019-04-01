@@ -7,24 +7,24 @@ defmodule AcmBot.Cache do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
-  def set_file_id(id) do
-    GenServer.cast(__MODULE__, {:set_file_id, id})
+  def set(key, value) do
+    GenServer.cast(__MODULE__, {:set, key, value})
   end
 
-  def get_file_id() do
-    GenServer.call(__MODULE__, :get_file_id)
+  def get(key) do
+    GenServer.call(__MODULE__, {:get, key})
   end
 
   # Server Callbacks
   def init(:ok) do
-    {:ok, ""}
+    {:ok, %{}}
   end
 
-  def handle_cast({:set_file_id, id}, _state) do
-    {:noreply, id}
+  def handle_cast({:set, key, value}, state) do
+    {:noreply, Map.put(state, key, value)}
   end
 
-  def handle_call(:get_file_id, _from, state) do
-    {:reply, state, state}
+  def handle_call({:get, key}, _from, state) do
+    {:reply, Map.get(state, key), state}
   end
 end
