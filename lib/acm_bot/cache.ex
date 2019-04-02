@@ -2,8 +2,12 @@ defmodule AcmBot.Cache do
   use GenServer
   require Logger
 
+  def child_spec(_) do
+    %{id: __MODULE__, start: {__MODULE__, :start_link, []}}
+  end
+
   # Client API
-  def start_link(args) do
+  def start_link() do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
