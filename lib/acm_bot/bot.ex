@@ -19,19 +19,10 @@ defmodule AcmBot.Bot do
   end
 
   def handle({:command, :junta, _message}, context) do
-    case AcmBot.Utils.get_board_info() do
+    case AcmBot.Board.info() do
       {:ok, board_info} ->
-        board_message =
-          List.foldl(board_info, "", fn board_member, message ->
-            message <>
-              """
-              Alias: #{board_member["username"]}
-              Rol: *#{board_member["role"]}*
-
-              """
-          end)
-
-        answer(context, board_message, parse_mode: "Markdown")
+        message = board_info |> Stream.map(&format_board_member/1) |> Enum.join("\n")
+        answer(context, message, parse_mode: "Markdown")
 
       _ ->
         answer(
@@ -81,5 +72,13 @@ defmodule AcmBot.Bot do
 
   def handle(_, _) do
     :no_message_handle
+  end
+
+  # Private
+  defp format_board_member(board_member) do
+    """
+    Alias: #{board_member["username"]}
+    Rol: *#{board_member["role"]}*
+    """
   end
 end
