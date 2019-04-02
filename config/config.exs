@@ -7,6 +7,8 @@ config :ex_gram,
 
 config :acm_bot,
   # prices_file: "ejemplo.pdf"
-  prices_file: {:system, "PRICES_PATH"}
+  prices_file: {:system, "PRICES_PATH"},
+  # board_file: "ejemplo.json"
+  board_file: {:system, "BOARD_PATH"}
 
 import_config "#{Mix.env()}.exs"

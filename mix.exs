@@ -25,7 +25,8 @@ defmodule AcmBot.MixProject do
       {:ex_gram, "~> 0.5.0"},
       # Releases
       {:distillery, "~> 2.0", runtime: false},
-      {:config_tuples, "~> 0.2"}
+      {:config_tuples, "~> 0.2"},
+      {:jason, "~> 1.1"}
     ]
   end
 end
