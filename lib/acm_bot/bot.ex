@@ -61,7 +61,12 @@ defmodule AcmBot.Bot do
   def handle({:message, %{chat: %{id: cid}, new_chat_members: new_chat_members}}, _context) do
     Enum.each(new_chat_members, fn member ->
       user = Map.get(member, :username) || Map.get(member, :first_name)
-      ExGram.send_message(cid, "Bienvenido a ACM #{user}!")
+
+      ExGram.send_message(
+        cid,
+        "Bienvenido a ACM #{user}!\nPuedes consultar todos nuestros grupos [aquí](https://discourse.acmupm.es/t/grupos-de-telegram/213)",
+        parse_mode: "Markdown"
+      )
     end)
   end
 
